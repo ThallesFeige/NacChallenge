@@ -35,12 +35,16 @@ function LogoTitle() {
         <View style={{ flex: 1, flexDirection: 'row' }}>
             <Text style={styles.titulo}>Dorgan</Text>
             <Image
-                style={{ width: 35, height: 35 }}
-                source={require('./images/heart.jpg')}
+                style={{ width: 20, height: 35, marginTop: 5, marginLeft: 2 }}
+                source={require('./images/heartAlpha.jpg')}
             />
-            <Button style={styles.button}
+
+            <Ionicons type="button" name="md-settings"
+                style={styles.button}
+
                 title='Configurações'
                 onPress={() => navigation.navigate('config')}
+
             />
 
 
@@ -49,20 +53,20 @@ function LogoTitle() {
 }
 
 // TELA DE CONFIGURAÇÃO  <<<<<<<<
-function TelaConfig() {
-
-    const navigation = useNavigation();
-
-
+function ConfigScreen() {
     return (
-        <View>
-            <Text style={styles.paragraph}>Em progresso :)</Text>
-
-        </View>
-        //  <Button
-        //    title='Voltar'
-        //      onPress={() => navigation.goBack()}      COLOCAR DENTRO DA VIEW SE FOR USAR
-        //    />
+        <Stack.Navigator>
+            <Stack.Screen
+                name="config"
+                options={
+                    { headerTitle: props => <LogoTitle /> }}>
+                {props =>
+                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                        <Text>Em processo :o </Text>
+                    </View>
+                }
+            </Stack.Screen>
+        </Stack.Navigator>
     );
 }
 
@@ -89,7 +93,7 @@ function JunteSeScreen() {
     return (
         <Stack.Navigator>
             <Stack.Screen
-                name="junte"
+                name="Junte-se a causa"
                 options={
                     { headerTitle: props => <LogoTitle /> }}>
                 {props =>
@@ -107,7 +111,7 @@ function DuvidasScreen() {
     return (
         <Stack.Navigator>
             <Stack.Screen
-                name="duvi"
+                name="duvidas"
                 options={
                     { headerTitle: props => <LogoTitle /> }}>
                 {props =>
@@ -155,7 +159,7 @@ function PrincipalStack() {
             <Stack.Screen
                 name='config'
                 options={{ title: 'Tela de configuração' }}>
-                {props => <TelaConfig />}
+                {props => <ConfigScreen />}
             </Stack.Screen>
 
             <Stack.Screen
@@ -176,7 +180,6 @@ function PrincipalStack() {
                 {props => <DuvidasScreen />}
             </Stack.Screen>
 
-
         </Stack.Navigator>
 
     );
@@ -194,11 +197,14 @@ function AppBottonTab({ routeName }) {
                     if (route.name === 'Depoimentos') {
                         iconName = 'ios-videocam';
                     }
+                    else if (route.name === 'config') {
+                        iconName = focused ? 'md-settings' : 'md-settings';
+                    }
                     else if (route.name === 'Junte-se a causa') {
-                        iconName = focused ? 'ios-list-box' : 'ios-people';
+                        iconName = focused ? 'ios-people' : 'ios-people';
                     }
                     else if (route.name === 'Dúvidas') {
-                        iconName = focused ? 'ios-information-circle' : 'ios-help-circle-outline';
+                        iconName = focused ? 'ios-help-circle-outline' : 'ios-help-circle-outline';
                     }
                     else if (route.name === 'Inicial') {
                         iconName = focused ? 'ios-home' : 'ios-home';
@@ -213,7 +219,6 @@ function AppBottonTab({ routeName }) {
                 inactiveTintColor: 'blue',
             }}
         >
-
             <Tab.Screen name="Inicial" component={PrincipalStack} />
             <Tab.Screen name="Depoimentos" component={DepoimentosScreen} />
             <Tab.Screen name="Junte-se a causa" component={JunteSeScreen} />
@@ -232,6 +237,10 @@ class App extends Component {
 
                     <Drawer.Screen name='inicial'>
                         {props => <AppBottonTab routeName='inicial' />}
+                    </Drawer.Screen>
+
+                    <Drawer.Screen name='config'>
+                        {props => <AppBottonTab routeName='config' />}
                     </Drawer.Screen>
 
                     <Drawer.Screen name='Depoimentos'>
@@ -262,19 +271,20 @@ const styles = StyleSheet.create({
     titulo: {
         margin: 1,
         marginTop: 6,
-        fontSize: 20,
+        fontSize: 23,
         fontWeight: 'bold',
         textAlign: 'center',
+        color: "blue",
     },
     button: {
-        backgroundColor: 'black',
-        color: 'white',
-        fontSize: 15,
+        color: 'black',
+        fontSize: 28,
         width: 150,
-        marginTop: 13,
-        marginHorizontal: 70,
+        marginTop: 6,
+        marginHorizontal: 150,
         paddingHorizontal: 10,
         textAlign: 'center',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        activeTintColor: 'black',
     },
 });
