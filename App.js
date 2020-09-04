@@ -19,7 +19,6 @@ import { Ionicons } from '@expo/vector-icons';
 //módulo do Navigation Drawer
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-
 //uso de Hooks para criação de objetos
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -54,6 +53,8 @@ function LogoTitle() {
 
 // TELA DE CONFIGURAÇÃO  <<<<<<<<
 function ConfigScreen() {
+    const navigation = useNavigation();
+
     return (
         <Stack.Navigator>
             <Stack.Screen
@@ -62,7 +63,38 @@ function ConfigScreen() {
                     { headerTitle: props => <LogoTitle /> }}>
                 {props =>
                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                        <Text>Em processo :o </Text>
+                        <Text style={{ color: '#3268a8', fontSize: 25, fontWeight: 'bold' }}>Configurações</Text>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('sobre')}
+                            style={{ marginTop: 20 }}>
+                            <Text style={{ fontSize: 23, color: '#3268a8', marginTop: 50 }}>Sobre Dorgan</Text>
+                        </TouchableOpacity>
+                        <Text style={{ fontSize: 23, color: '#3268a8', marginTop: 50 }}>Notificações</Text>
+
+                        <Text style={{ fontSize: 23, color: '#3268a8', marginTop: 50 }}>Fale Conosco</Text>
+                        <Text style={{ fontSize: 20, color: '#3268a8', marginTop: 20 }}>Email: Dorgan@gmail.com</Text>
+                        <Text style={{ fontSize: 20, color: '#3268a8', marginTop: 20 }}>Telefone: 11 5577-8888</Text>
+
+                    </View>
+                }
+            </Stack.Screen>
+        </Stack.Navigator>
+    );
+}
+
+//TELA DE SOBRE DORGAN
+function SobreScreen() {
+
+    return (
+        <Stack.Navigator>
+            <Stack.Screen
+                name='sobre'
+                options={
+                    { headerTitle: props => <LogoTitle /> }}>
+                {props =>
+                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ color: '#3268a8', fontSize: 25, fontWeight: 'bold' }}>Sobre Nós</Text>
+                        <Text style={{ fontSize: 25, color: '#fff' }}>Sobre Dorgan</Text>
                     </View>
                 }
             </Stack.Screen>
@@ -98,7 +130,26 @@ function JunteSeScreen() {
                     { headerTitle: props => <LogoTitle /> }}>
                 {props =>
                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                        <Text>Em processo :)</Text>
+                        <Text style={{ color: '#3268a8', fontSize: 30 }}>
+                            Junte-se a causa!
+                        </Text>
+
+                        <Image
+                            style={{ width: 100, height: 100, marginTop: 20 }}
+                            source={require('./images/facebook.png')}
+                        />
+                        <Text style={{ color: '#3268a8', fontSize: 15 }}>Facebook</Text>
+                        <Image
+                            style={{ width: 100, height: 100, marginTop: 20 }}
+                            source={require('./images/instagram.png')}
+                        />
+                        <Text style={{ color: '#3268a8', fontSize: 15 }}>Instagram</Text>
+                        <Image
+                            style={{ width: 100, height: 100, marginTop: 20 }}
+                            source={require('./images/whatsapp.png')}
+                        />
+                        <Text style={{ color: '#3268a8', fontSize: 15 }}>Whatsapp</Text>
+
                     </View>
                 }
             </Stack.Screen>
