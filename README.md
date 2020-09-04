@@ -1,11 +1,11 @@
-# Sample Snack app
+Futuras mudanças: 
 
-Open the `App.js` file to start writing some code. You can preview the changes directly on your phone or tablet by clicking the **Run** button or use the simulator by clicking **Tap to Play**. When you're done, click **Save** and share the link!
+-Acrescentar um chat online na tela inicial. 
 
-When you're ready to see everything that Expo provides (or if you want to use your own editor) you can **Export** your project and use it with [expo-cli](https://docs.expo.io/versions/latest/introduction/installation.html).
+-Acrescentar um ChatBot na área de dúvidas. 
 
-All projects created in Snack are publicly available, so you can easily share the link to this project via link, or embed it on a web page with the **Embed** button.
+-Acrescentar a tela com os depoimentos. 
 
-If you're having problems, you can tweet to us [@expo](https://twitter.com/expo) or ask in our [forums](https://forums.expo.io).
+-Acrescentar em notificações um botão para ligar e desligar. 
 
-Snack is Open Source. You can find the code on the [GitHub repo](https://github.com/expo/snack-web).
+-Acrescentar borda cinza nos textos da tela de configuração. 
